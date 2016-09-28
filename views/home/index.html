@@ -23,7 +23,7 @@
 										<li class="mdl-list__item mdl-list__item--three-line">
 
 											<span class="mdl-list__item-primary-content">
-											<i class="material-icons mdl-list__item-avatar">mood</i>
+												<i class="material-icons mdl-list__item-avatar">mood</i>
 												<span>Bryan Cranston</span>
 												<span class="mdl-list__item-text-body">
 													Hola
@@ -61,44 +61,27 @@
 					<div class="mdl-grid container-user-online">
 
 						<div class="mdl-cell--12-col">
-							<ul class="mdl-list">
+							<ul class="mdl-list" id="usuarios">
+
+								{% for user in users %}
+
 								<li class="mdl-list__item ">
 									<span class="mdl-list__item-primary-content">
 										<i class="material-icons mdl-list__item-avatar">mood</i>
-										<span>Bryan Cranston</span>
+										<span>{{user.name}}</span>
 									</span>
 									<span class="mdl-list__item-secondary-content">
 										<span class="mdl-list__item-secondary-info">Online</span>
 										<a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">computer</i></a>
 									</span>
 								</li>
-								<li class="mdl-list__item ">
-									<span class="mdl-list__item-primary-content">
-										<i class="material-icons mdl-list__item-avatar">mood</i>
-										<span>Aaron Paul</span>
-									</span>
-									<span class="mdl-list__item-secondary-content">
-										<span class="mdl-list__item-secondary-info">Online</span>
-										<a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">computer</i></a>
-									</span>
-								</li>
-								<li class="mdl-list__item ">
-									<span class="mdl-list__item-primary-content">
-										<i class="material-icons mdl-list__item-avatar">mood</i>
-										<span>Bob Odenkirk</span>
-									</span>
-									<span class="mdl-list__item-secondary-content">
-										<span class="mdl-list__item-secondary-info">Online</span>
-										<a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">computer</i></a>
-									</span>
-								</li>
+
+								{% endfor %}
+
+								
 							</ul>
 						</div>
-						
 					</div>
-
-
-
 				</div>
 				<div class="mdl-card__actions mdl-card--border">
 					<button class="mdl-button mdl-js-button mdl-js-ripple-effect">
@@ -115,5 +98,26 @@
 <script src="http://localhost:4000/socket.io/socket.io.js"></script>
 <script>
 	var socket = io();
+
+	var user = '{{name}}';
+
+	if(user != "")
+	{
+		$(document).on('ready',function(){
+
+			var datos = {
+				name : '{{name}}',
+				foto : '{{foto}}'
+			};
+			socket.emit('nuevo usuario',datos);
+
+		});
+
+		socket.on('devolviendo usuario',function(data){
+			var html = '<li class="mdl-list__item "><span class="mdl-list__item-primary-content"><i class="material-icons mdl-list__item-avatar">mood</i><span>' +data.name+'</span></span><span class="mdl-list__item-secondary-content"><span class="mdl-list__item-secondary-info">Online</span><a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">computer</i></a></span></li>';
+			$('#usuarios').append(html);
+		});
+	}
+
 </script>
 {% endblock %}
