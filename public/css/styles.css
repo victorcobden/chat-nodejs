@@ -1,0 +1,29 @@
+.container-chat,.container-user{
+	width: 100%;
+	height: 500px;
+	max-height: 500px;
+}
+.container-actions{
+	text-align: center;
+}
+.container-messages{
+	overflow-y: auto;
+	background-color: #607D8B;	
+}
+.container-user-online{
+	overflow-y: auto;
+	max-height: 100%;
+	height: 400px;
+	width: 100%;
+	margin: 0;
+}
+.container-conversation{
+	align-items: left;
+	margin: 0;
+	height: 350px;
+	width: 100%;
+}
+.card-message{
+	min-height: 80px !important;
+	width: 100%;
+}

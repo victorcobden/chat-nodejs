@@ -6,6 +6,7 @@
     <title>Chat NodeJS</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="/css/material.blue_grey-green.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 
 <body>
@@ -27,6 +28,7 @@
 			<a class="mdl-navigation__link" href="/auth/facebook">Login Facebook</a>
 		{% else %}
 			<a class="mdl-navigation__link" href="#">Hola, {{name}}</a>
+			<a class="mdl-navigation__link" href="/auth/logout">Exit</a>
 		{% endif %}
 
     </nav>
