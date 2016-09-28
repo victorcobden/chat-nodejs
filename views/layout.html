@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chat NodeJS</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="/css/material.blue_grey-green.min.css">
+</head>
+
+<body>
+
+
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <div class="mdl-layout-spacer"></div>
+
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Chat NodeJS</span>
+    <nav class="mdl-navigation">
+
+		{% if not name %}
+			<a class="mdl-navigation__link" href="/auth/facebook">Login Facebook</a>
+		{% else %}
+			<a class="mdl-navigation__link" href="#">Hola, {{name}}</a>
+		{% endif %}
+
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+    <div class="mdl-grid">
+    	{% block content %} {% endblock %}	
+    </div>
+    	
+    </div>
+  </main>
+</div>
+
+	<script src="/js/material.min.js"></script>
+    
+</body>
+
+</html>
